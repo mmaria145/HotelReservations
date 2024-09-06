@@ -1,30 +1,10 @@
-# Proyecto ABP
 
-## Proyecto del ABP
-Desarrollo de una aplicación en Python
-
-## Título del proyecto
-Aplicación en Python, que automatiza un contexto específico con acceso a datos
-
-## Descripción
-Este proyecto tiene como objetivo desarrollar una aplicación en Python que automatice un contexto específico con acceso a datos. Se debe realizar un análisis detallado de los requerimientos del proyecto; además, debe identificar las necesidades específicas del sistema, incluyendo el tipo de datos que se manejarán, la lógica de negocio y las funcionalidades esperadas. Determina las abstracciones de los modelos a utilizar, desde la base de datos hasta la forma de cómo se aplicaría el paradigma de programación para el proyecto propuesto.
-
-## Estructura del proyecto
-1. **Introducción**
-2. **Contexto del problema**
-3. **Análisis de requerimientos**
-4. **Modelo Relacional**
-5. **Diseño del sistema** (guía de cómo se utiliza la aplicación)
-
-## Aplicación de consola
-Será una aplicación de consola que permita realizar reservas. La estructura del proyecto se organizará de acuerdo a las necesidades identificadas en el análisis de requerimientos.
-
-
-## Introducción
-El proyecto de reservas de hotel tiene como objetivo desarrollar una aplicación en Python que automatice la gestión de reservas. Esta aplicación permitirá a los usuarios realizar reservas de habitaciones a través de una interfaz de consola.
+## App_HotelReservations
+Es una aplicación de consola que permita realizar reservas, tiene como objetivo la automatizar la gestión de reservas. Esta aplicación permitirá a los usuarios realizar reservas de habitaciones a través de una interfaz de consola.
 
 ## Contexto del problema
-La gestión manual de reservas de hotel puede ser compleja y propensa a errores. Los hoteles necesitan una solución que les permita gestionar las reservas de manera eficiente, evitando conflictos de disponibilidad y mejorando la experiencia del cliente. La automatización de este proceso mediante una aplicación de consola puede reducir errores y aumentar la eficiencia.
+La gestión manual de reservas de hotel puede ser compleja y propensa a errores. Los hoteles necesitan una solución que les permita gestionar las reservas de manera eficiente, evitando conflictos de disponibilidad y mejorando la experiencia del cliente. La automatización de este proceso reduce errores y aumenta la eficiencia.
+
 
 ## Análisis de requerimientos
 Para desarrollar la aplicación de reservas de hotel, se deben considerar los siguientes requerimientos:
@@ -32,6 +12,39 @@ Para desarrollar la aplicación de reservas de hotel, se deben considerar los si
 1. **Gestión de habitaciones**: La aplicación debe permitir la gestión de diferentes tipos de habitaciones y su disponibilidad.
 2. **Reservas**: Los usuarios deben poder realizar, modificar y cancelar reservas.
 3. **Clientes**: La aplicación debe gestionar la información de los clientes.
-4. **Pagos**: La aplicación debe registrar los pagos realizados por los clientes.
-5. **Reportes**: La aplicación debe generar reportes sobre la ocupación del hotel y otros datos relevantes.
 
+
+## Modelo Relacional
+El modelo relacional de la aplicación de reservas de hotel se compone de las siguientes tablas:
+
+### Tabla `hotels`
+- **hotel_id**: Identificador único del hotel (Primary Key).
+- **name**: Nombre del hotel.
+- **address**: Dirección del hotel.
+- **phone_number**: Número de teléfono del hotel.
+
+### Tabla `rooms`
+- **room_id**: Identificador único de la habitación (Primary Key).
+- **hotel_id**: Identificador del hotel al que pertenece la habitación (Foreign Key que referencia a `hotels.hotel_id`).
+- **room_number**: Número de la habitación.
+- **room_type**: Tipo de habitación (por ejemplo, simple, doble, suite).
+- **price_per_night**: Precio por noche de la habitación.
+- **availability**: Disponibilidad de la habitación (booleano).
+
+### Tabla `customers`
+- **customer_id**: Identificador único del cliente (Primary Key).
+- **first_name**: Nombre del cliente.
+- **last_name**: Apellido del cliente.
+- **email**: Correo electrónico del cliente.
+- **phone_number**: Número de teléfono del cliente.
+
+### Tabla `reservations`
+- **reservation_id**: Identificador único de la reserva (Primary Key).
+- **customer_id**: Identificador del cliente que realiza la reserva (Foreign Key que referencia a `customers.customer_id`).
+- **room_id**: Identificador de la habitación reservada (Foreign Key que referencia a `rooms.room_id`).
+- **check_in_date**: Fecha de entrada.
+- **check_out_date**: Fecha de salida.
+- **total_price**: Precio total de la reserva.
+- **status**: Estado de la reserva (por ejemplo, confirmada, cancelada).
+
+![Diagrama ER](./img/Diagrama-Entidad-Relacion.png)
