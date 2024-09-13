@@ -48,3 +48,72 @@ El modelo relacional de la aplicación de reservas de hotel se compone de las si
 - **status**: Estado de la reserva (por ejemplo, confirmada, cancelada).
 
 ![Diagrama ER](./img/Diagrama-Entidad-Relacion.png)
+
+### Guía para Instalar y Usar la Aplicación
+
+#### Requisitos
+- Python
+- MySQL
+
+#### Pasos para la Instalación y Uso
+
+1. **Clonar el Repositorio:**
+   ```bash
+   git clone https://github.com/mmaria145/HotelReservations.git
+   cd HotelReservations
+   ```
+
+2. **Crear y Activar un Entorno Virtual:**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # En Windows usa: .venv\Scripts\activate
+   ```
+
+3. **Instalar las Librerías del Archivo `requirements.txt`:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Crear el Archivo `.env`:**
+   - Copiar el archivo `env.example` y renombrarlo a `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+
+5. **Crear una Base de Datos en MySQL:**
+   - Acceder a MySQL y crear la base de datos:
+     ```sql
+     CREATE DATABASE hotel;
+     ```
+
+6. **Configurar las Credenciales en el Archivo `.env`:**
+   - Editar el archivo `.env` y poner las credenciales de la base de datos:
+     ```dotenv
+     DB_USER=tu_usuario
+     DB_PASSWORD=tu_contraseña
+     DB_HOST=localhost
+     DB_PORT=3306
+     DB_NAME=hotel
+     ```
+
+7. **Ejecutar la Aplicación:**
+       Para ejecutar el script `app/main.py` desde la consola y asegurarte de que Python pueda encontrar el módulo `app`, sigue estos pasos:
+    
+     Activa tu entorno virtual `.venv`.
+     Ajusta el `PYTHONPATH` para incluir el directorio del proyecto.
+     Ejecuta el script.
+    
+    ```bash
+    source .venv/bin/activate  # Activa el entorno virtual
+    PYTHONPATH=. python app/main.py  # Ajusta el PYTHONPATH y ejecuta el script
+    ```
+    
+    En Windows, los comandos para activar el entorno virtual y ajustar el `PYTHONPATH` serían:
+
+    ```bash
+    .venv\Scripts\activate  # Activa el entorno virtual
+    set PYTHONPATH=. && python app\main.py  # Ajusta el PYTHONPATH y ejecuta el script
+    ```
+
+
+Con estos pasos, tu aplicación debería estar lista para usarse.
